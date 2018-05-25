@@ -4,7 +4,6 @@ import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-
 import com.genericfunctions.GenericFunctions;
 import com.pagesobjects.HomePage;
 import com.pagesobjects.ProductDescriptionPage;
@@ -23,10 +22,11 @@ public class TestRunner {
 	@Test
 	public void scenario() {
 		homePage = (HomePage) PageInstanceFactory.getPageInstance(driver, "HomePage");
-		func.waitForElementToBeVisible(homePage.getSearchInput());
+		func.waitForElementToBeVisible(driver, homePage.getSearchInput());
 		homePage.getSearchInput().sendKeys("tshirts");
 		homePage.getSearchSubmit().click();
 		srp = (SearchResultPage) PageInstanceFactory.getPageInstance(driver, "SearchResultPage");
+		func.waitForElementToBeClickable(driver, srp.getSelectFirstProduct());
 		srp.getSelectFirstProduct().click();
 		pdp = (ProductDescriptionPage) PageInstanceFactory.getPageInstance(driver, "ProductDescriptionPage");
 		pdp.getAddToCart().click();
