@@ -29,6 +29,7 @@ public class TestRunner {
 		func.waitForElementToBeClickable(driver, srp.getSelectFirstProduct());
 		srp.getSelectFirstProduct().click();
 		pdp = (ProductDescriptionPage) PageInstanceFactory.getPageInstance(driver, "ProductDescriptionPage");
+		func.waitForElementToBeVisible(driver, pdp.getAddToCart());
 		pdp.getAddToCart().click();
 		String cartPrice = homePage.getCartValue().getText().trim();
 		System.out.println(cartPrice);
